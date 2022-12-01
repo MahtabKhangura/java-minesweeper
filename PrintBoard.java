@@ -1,8 +1,12 @@
 public class PrintBoard {
     static String[][] board = new String[20][15];
+    static int[][] mines = new int[20][15];
+    static int minecount = 0;
     public static void main(String[] args) {
-        // create_board();
-        // print_board();
+        create_board();
+        generate_mines(10, 10);
+        show_all_mines();
+        print_board();
     }
     public static void create_board() {
         for (int x=0; x<20; x++) {
@@ -29,5 +33,27 @@ public class PrintBoard {
         }
         System.out.println("    1  2  3  4  5  6  7  8  9  10 11 12 13 14 15");
         System.out.println();
+    }
+    public static void replace_board_character(String newcharacter, int x, int y) {
+        board[x][y] = newcharacter;
+    }
+    public static void generate_mines(int xstart, int ystart) {
+        while (minecount < 60) {
+            int x = 1 + (int)(19*Math.random());
+            int y = 1 + (int)(14*Math.random());
+            if (x != xstart && y != ystart && mines[x][y] != 1) {
+                mines[x][y] = 1;
+                minecount += 1;
+            }
+        }
+    }
+    public static void show_all_mines() {
+        for (int x=0; x<20; x++) {
+            for (int y=0; y<15; y++) {
+                if (mines[x][y] == 1) {
+                    replace_board_character("BO", x, y);
+                }
+            }
+        }
     }
 }
