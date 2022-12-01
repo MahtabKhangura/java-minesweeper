@@ -5,7 +5,7 @@ public class PrintBoard {
     public static void main(String[] args) {
         create_board();
         generate_mines(10, 10);
-        show_all_mines();
+        show_all_mines("BO");
         print_board();
     }
     public static void create_board() {
@@ -47,11 +47,11 @@ public class PrintBoard {
             }
         }
     }
-    public static void show_all_mines() {
+    public static void show_all_mines(String character) {
         for (int x=0; x<20; x++) {
             for (int y=0; y<15; y++) {
                 if (mines[x][y] == 1) {
-                    replace_board_character("BO", x, y);
+                    replace_board_character(character, x, y);
                 }
             }
         }
