@@ -1,3 +1,5 @@
+// Board functions: Creating, printing, replacing a displayed character, mine generation, showing all mines.
+
 public class PrintBoard {
     static String[][] board = new String[20][15];
     static int[][] mines = new int[20][15];
