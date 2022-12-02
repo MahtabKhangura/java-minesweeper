@@ -38,13 +38,21 @@ public class PrintBoard {
         while (minecount < 60) {
             int x = 1 + (int)(19*Math.random());
             int y = 1 + (int)(14*Math.random());
-            if (x != xstart && y != ystart && mines[x][y] != 1) {
+            boolean surround = false;
+            for (int i=-1; i<1; i++) {
+                for (int j=-1; j<1; j++) {
+                    if (x == xstart+i && y == ystart+j) {
+                        surround = true;
+                    }
+                }
+            }
+            if (!surround && mines[x][y] != 1) {
                 mines[x][y] = 1;
                 minecount += 1;
             }
         }
     }
-    public void show_all_mines() {
+    public static void show_all_mines() {
         for (int x=0; x<20; x++) {
             for (int y=0; y<15; y++) {
                 if (mines[x][y] == 1) {

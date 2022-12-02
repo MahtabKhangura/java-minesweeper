@@ -2,8 +2,9 @@ import java.util.Scanner;
 
 public class Player {
   String playerName;
-  String action;
-  int playerVal1, playerVal2;
+  static String action;
+  static int playerVal1;
+  static int playerVal2;
   boolean firstMove = true;
   Scanner sc = new Scanner(System.in);
 
