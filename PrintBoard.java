@@ -5,10 +5,10 @@ public class PrintBoard {
     static int[][] mines = new int[20][15];
     static int minecount = 0;
     public static void main(String[] args) {
-        // create_board();
-        // generate_mines(10, 10);
-        // show_all_mines("BO");
-        // print_board();
+        create_board();
+        generate_mines(10, 10);
+        show_all_mines("💣");
+        print_board();
     }
     public static void create_board() {
         for (int x=0; x<20; x++) {
