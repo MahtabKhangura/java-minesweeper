@@ -1,10 +1,11 @@
 import java.util.Scanner;
 
 public class Player {
-  static String playerName;
-  static String action;
-  static int playerVal1, playerVal2;
-  static Scanner sc = new Scanner(System.in);
+  String playerName;
+  String action;
+  int playerVal1, playerVal2;
+  boolean firstMove = true;
+  Scanner sc = new Scanner(System.in);
 
   public void init_player() {
     System.out.print("Welcome to minesweeper. What is your name? ");
@@ -26,6 +27,10 @@ public class Player {
         if ((action.equals("c") || action.equals("f")) && playerVal1 <= PrintBoard.board.length && playerVal2 <= PrintBoard.board[playerVal1].length && PrintBoard.board[playerVal1][playerVal2] == "~~") {
           if (action.equals("c")) {
             PrintBoard.replace_board_character("🟩", playerVal1, playerVal2);
+            if (firstMove) {
+              PrintBoard.generate_mines(playerVal1, playerVal2);
+              firstMove = false;
+            }
           } else {
             PrintBoard.replace_board_character("⛳️", playerVal1, playerVal2);
           }

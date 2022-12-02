@@ -34,7 +34,7 @@ public class PrintBoard {
     public static void replace_board_character(String newcharacter, int x, int y) {
         board[x][y] = newcharacter;
     }
-    public void generate_mines(int xstart, int ystart) {
+    public static void generate_mines(int xstart, int ystart) {
         while (minecount < 60) {
             int x = 1 + (int)(19*Math.random());
             int y = 1 + (int)(14*Math.random());
