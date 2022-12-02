@@ -16,13 +16,13 @@ public class Player {
     // board.print_board();
   }
 
-  public static void init_player() {
+  public void init_player() {
     System.out.print("Welcome to minesweeper. What is your name? ");
     playerName = sc.nextLine();
     System.out.println("Hello " + playerName);
   }
 
-  public static void edit_board() {
+  public void edit_board() {
     String[] playerVal;
 
     while(true) {
