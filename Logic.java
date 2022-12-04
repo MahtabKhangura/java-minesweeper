@@ -51,13 +51,9 @@ public class Logic {
             for (int i=-1; i<2; i++) {
                 for (int j=-1; j<2; j++) {
                     // if (i*i == 0 || j*j == 0) {
-                    try {
-                        if ((temp2 + i >= 0) && (temp2 + i <= 19) && (temp3 + j >= 0) && (temp3 + j <= 14) && PrintBoard.mines[temp2 + i][temp3 + j] == 0 && !alreadychecked.contains((temp2 + i) + " " + (temp3 + j))) {
+                    if ((temp2 + i >= 0) && (temp2 + i <= 19) && (temp3 + j >= 0) && (temp3 + j <= 14) && PrintBoard.mines[temp2 + i][temp3 + j] == 0 && !alreadychecked.contains((temp2 + i) + " " + (temp3 + j))) {
                             tempcount += 1;
                             tobechecked.add((temp2 + i) + " " + (temp3 + j));
-                        }
-                    } catch (Exception e) {
-                        continue;
                     }
                     // }
                 }
