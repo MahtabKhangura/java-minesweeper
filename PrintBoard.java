@@ -39,8 +39,8 @@ public class PrintBoard {
             int x = 1 + (int)(19*Math.random());
             int y = 1 + (int)(14*Math.random());
             boolean surround = false;
-            for (int i=-1; i<1; i++) {
-                for (int j=-1; j<1; j++) {
+            for (int i=-1; i<2; i++) {
+                for (int j=-1; j<2; j++) {
                     if (x == xstart+i && y == ystart+j) {
                         surround = true;
                     }
