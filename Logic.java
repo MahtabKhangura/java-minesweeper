@@ -16,7 +16,7 @@ public class Logic {
         check_if_won();
         check_for_bombs();
         theboard.print_board();
-        theboard.show_all_mines();
+        PrintBoard.show_all_mines();
         theboard.print_board();
     }
 
@@ -49,15 +49,15 @@ public class Logic {
             int temp3 = Integer.parseInt(temp1[1]);
             int tempcount = 0;
             for (int i=-1; i<2; i++) {
-                System.out.println(i);
                 for (int j=-1; j<2; j++) {
                     if (i*i == 0 || j*j == 0) {
-                        if (PrintBoard.mines[temp2 + i][temp3 + j] == 0 && !alreadychecked.contains((temp2 + i) + " " + (temp3 + j)) && (temp2 + i > 0) && (temp2 + i < 19) && (temp3 + j > 0) && (temp3 + j < 14)) {
-                            System.out.println(temp3+j);
-                            tempcount += 1;
-                            tobechecked.add((temp2 + i) + " " + (temp3 + j));
-                        } else {
-                            alreadychecked.add(temp2 + i + " " + temp3 + j);
+                        try {
+                            if ((temp2 + i >= 0) && (temp2 + i <= 19) && (temp3 + j >= 0) && (temp3 + j <= 14) && PrintBoard.mines[temp2 + i][temp3 + j] == 0 && !alreadychecked.contains((temp2 + i) + " " + (temp3 + j))) {
+                                tempcount += 1;
+                                tobechecked.add((temp2 + i) + " " + (temp3 + j));
+                            }
+                        } catch (Exception e) {
+                            continue;
                         }
                     }
                 }
