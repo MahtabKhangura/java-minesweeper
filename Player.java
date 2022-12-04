@@ -2,8 +2,9 @@ import java.util.Scanner;
 
 public class Player {
   String playerName;
-  String action;
-  int playerVal1, playerVal2;
+  static String action;
+  static int playerVal1;
+  static int playerVal2;
   boolean firstMove = true;
   Scanner sc = new Scanner(System.in);
 
@@ -26,9 +27,9 @@ public class Player {
         
         if ((action.equals("c") || action.equals("f")) && playerVal1 <= PrintBoard.board.length && playerVal2 <= PrintBoard.board[playerVal1].length && PrintBoard.board[playerVal1][playerVal2] == "~~") {
           if (action.equals("c")) {
-            PrintBoard.replace_board_character("🟩", playerVal1, playerVal2);
             if (firstMove) {
               PrintBoard.generate_mines(playerVal1, playerVal2);
+              PrintBoard.replace_board_character("🟩", playerVal1, playerVal2);
               firstMove = false;
             }
           } else {
