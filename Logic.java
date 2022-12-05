@@ -11,13 +11,19 @@ public class Logic {
         player.init_player();
         theboard.create_board();
         theboard.print_board();
-        player.edit_board();
-        check_if_dead();
-        check_if_won();
-        check_for_bombs();
-        theboard.print_board();
-        PrintBoard.show_all_mines();
-        theboard.print_board();
+        while (play) {
+            player.edit_board();
+            if (!player.flagged) {
+                check_if_dead();
+                check_if_won();
+                check_for_bombs();
+                theboard.print_board();
+            } else {
+                theboard.print_board();
+                player.flagged = false;
+            }
+
+        }
     }
 
     public static void check_if_dead() {
@@ -27,6 +33,7 @@ public class Logic {
             play = false;
         }
     }
+
     public static void check_if_won() {
         int minecount = 0;
         for (int i=0; i<20; i++) {
@@ -41,6 +48,7 @@ public class Logic {
             play = false;
         }
     }
+
     public static void check_for_bombs() {
         tobechecked.add(Player.playerVal1 + " " + Player.playerVal2);
         while (tobechecked.size() != 0) {
@@ -50,21 +58,27 @@ public class Logic {
             int tempcount = 0;
             for (int i=-1; i<2; i++) {
                 for (int j=-1; j<2; j++) {
-                    // if (i*i == 0 || j*j == 0) {
-                    if ((temp2 + i >= 0) && (temp2 + i <= 19) && (temp3 + j >= 0) && (temp3 + j <= 14) && PrintBoard.mines[temp2 + i][temp3 + j] == 0 && !alreadychecked.contains((temp2 + i) + " " + (temp3 + j))) {
-                            tempcount += 1;
-                            tobechecked.add((temp2 + i) + " " + (temp3 + j));
+                    if ((temp2 + i >= 0) && (temp2 + i <= 19) && (temp3 + j >= 0) && (temp3 + j <= 14) && PrintBoard.mines[temp2 + i][temp3 + j] == 1) {
+                        tempcount += 1;
                     }
-                    // }
                 }
             }
-            if (tempcount > 0) {
-                PrintBoard.replace_board_character("0" + Integer.toString(tempcount), temp2, temp3);
-            } else {
+            if (tempcount == 0) {
                 PrintBoard.replace_board_character("🟩", temp2, temp3);
+                alreadychecked.add(tobechecked.get(0));
+                for (int i=-1; i<2; i++) {
+                    for (int j=-1; j<2; j++) {
+                        if ((temp2 + i >= 0) && (temp2 + i <= 19) && (temp3 + j >= 0) && (temp3 + j <= 14) && PrintBoard.mines[temp2 + i][temp3 + j] == 0 && !alreadychecked.contains((temp2 + i) + " " + (temp3 + j))) {
+                            tobechecked.add((temp2 + i) + " " + (temp3 + j));   
+                        }
+                    }
+                }
+                tobechecked.remove(0);
+            } else {
+                PrintBoard.replace_board_character("0" + Integer.toString(tempcount), temp2, temp3);
+                alreadychecked.add(tobechecked.get(0));
+                tobechecked.remove(0);
             }
-            alreadychecked.add(tobechecked.get(0));
-            tobechecked.remove(0);
         }
     }
 }
