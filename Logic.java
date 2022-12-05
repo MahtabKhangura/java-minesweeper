@@ -14,9 +14,9 @@ public class Logic {
         while (play) {
             player.edit_board();
             if (!player.flagged) {
+                check_for_bombs();
                 check_if_dead();
                 check_if_won();
-                check_for_bombs();
                 theboard.print_board();
             } else {
                 theboard.print_board();
