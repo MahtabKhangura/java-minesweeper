@@ -10,7 +10,7 @@ public class Player {
   Scanner sc = new Scanner(System.in);
 
   public void init_player() {
-    System.out.print("Welcome to minesweeper. What is your name? ");
+    System.out.print("Welcome to Minesweeper. What is your name? ");
     playerName = sc.nextLine();
     System.out.println("Hello " + playerName + "!");
   }
@@ -20,7 +20,7 @@ public class Player {
 
     while(true) {
       try {
-        System.out.println("Where do you want to check or flag? Enter check (c) or flag (f) and the coordinates of the desired cell (row, column).");
+        System.out.println("Where do you want to check or flag? Enter check (c) or flag/unflag (f) and the coordinates of the desired cell (row column).");
         playerVal = sc.nextLine().split(" ", 3);
         action = playerVal[0];
         playerVal1 = Integer.parseInt(playerVal[1]) - 1;
