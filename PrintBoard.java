@@ -12,7 +12,7 @@ public class PrintBoard {
             }
         }
     }
-    
+
     public void print_board() {
         System.out.println();
         System.out.println("    1  2  3  4  5  6  7  8  9  10 11 12 13 14 15");
@@ -60,7 +60,7 @@ public class PrintBoard {
         for (int x=0; x<20; x++) {
             for (int y=0; y<15; y++) {
                 if (mines[x][y] == 1) {
-                    replace_board_character("💣", x, y);
+                    replace_board_character("\uD83D\uDCA3", x, y);
                 }
             }
         }

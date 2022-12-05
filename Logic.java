@@ -38,7 +38,7 @@ public class Logic {
         int minecount = 0;
         for (int i=0; i<20; i++) {
             for (int j=0; j<15; j++) {
-                if (PrintBoard.mines[i][j] == 0 && !PrintBoard.board[i][j].equals("🟩")) {
+                if (PrintBoard.mines[i][j] == 0 && !PrintBoard.board[i][j].equals("\uD83D\uDFE9")) {
                     minecount += 1;
                 }
             }
@@ -64,7 +64,7 @@ public class Logic {
                 }
             }
             if (tempcount == 0) {
-                PrintBoard.replace_board_character("🟩", temp2, temp3);
+                PrintBoard.replace_board_character("\uD83D\uDFE9", temp2, temp3);
                 alreadychecked.add(tobechecked.get(0));
                 for (int i=-1; i<2; i++) {
                     for (int j=-1; j<2; j++) {
