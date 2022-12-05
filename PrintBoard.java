@@ -12,6 +12,7 @@ public class PrintBoard {
             }
         }
     }
+    
     public void print_board() {
         System.out.println();
         System.out.println("    1  2  3  4  5  6  7  8  9  10 11 12 13 14 15");
@@ -31,9 +32,11 @@ public class PrintBoard {
         System.out.println("    1  2  3  4  5  6  7  8  9  10 11 12 13 14 15");
         System.out.println();
     }
+
     public static void replace_board_character(String newcharacter, int x, int y) {
         board[x][y] = newcharacter;
     }
+
     public static void generate_mines(int xstart, int ystart) {
         while (minecount < 60) {
             int x = 1 + (int)(19*Math.random());
@@ -52,6 +55,7 @@ public class PrintBoard {
             }
         }
     }
+
     public static void show_all_mines() {
         for (int x=0; x<20; x++) {
             for (int y=0; y<15; y++) {

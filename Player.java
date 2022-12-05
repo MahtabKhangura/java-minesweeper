@@ -6,6 +6,7 @@ public class Player {
   static int playerVal1;
   static int playerVal2;
   boolean firstMove = true;
+  boolean flagged = false;
   Scanner sc = new Scanner(System.in);
 
   public void init_player() {
@@ -13,7 +14,7 @@ public class Player {
     playerName = sc.nextLine();
     System.out.println("Hello " + playerName + "!");
   }
-
+  
   public void edit_board() {
     String[] playerVal;
 
@@ -25,15 +26,26 @@ public class Player {
         playerVal1 = Integer.parseInt(playerVal[1]) - 1;
         playerVal2 = Integer.parseInt(playerVal[2]) - 1;
         
-        if ((action.equals("c") || action.equals("f")) && playerVal1 <= PrintBoard.board.length && playerVal2 <= PrintBoard.board[playerVal1].length && PrintBoard.board[playerVal1][playerVal2] == "~~") {
+        if ((action.equals("c") || action.equals("f")) && playerVal1 <= PrintBoard.board.length && playerVal2 <= PrintBoard.board[playerVal1].length && (PrintBoard.board[playerVal1][playerVal2] == "~~" || PrintBoard.board[playerVal1][playerVal2] == "⛳️")) {
           if (action.equals("c")) {
             if (firstMove) {
+              for (int i=0; i<20; i++) {
+                for (int j=0; j<15; j++) {
+                    if (PrintBoard.board[i][j].equals("⛳️")) {
+                        PrintBoard.replace_board_character("~~", i, j);
+                    }
+                }
+            }
               PrintBoard.generate_mines(playerVal1, playerVal2);
-              PrintBoard.replace_board_character("🟩", playerVal1, playerVal2);
               firstMove = false;
             }
           } else {
-            PrintBoard.replace_board_character("⛳️", playerVal1, playerVal2);
+            if (PrintBoard.board[playerVal1][playerVal2] == "~~") {
+              PrintBoard.replace_board_character("⛳️", playerVal1, playerVal2);
+            } else {
+              PrintBoard.replace_board_character("~~", playerVal1, playerVal2);
+            }
+            flagged = true;
           }
           break;
         } else {
