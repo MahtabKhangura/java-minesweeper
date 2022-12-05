@@ -22,7 +22,6 @@ public class Logic {
                 theboard.print_board();
                 player.flagged = false;
             }
-
         }
     }
 
