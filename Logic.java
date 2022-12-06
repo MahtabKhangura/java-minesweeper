@@ -37,7 +37,7 @@ public class Logic {
         int minecount = 0;
         for (int i=0; i<20; i++) {
             for (int j=0; j<15; j++) {
-                if (PrintBoard.mines[i][j] == 0 && !PrintBoard.board[i][j].equals("\uD83D\uDFE9")) {
+                if (PrintBoard.mines[i][j] == 0 && PrintBoard.board[i][j].equals("~~")) {
                     minecount += 1;
                 }
             }
@@ -64,20 +64,20 @@ public class Logic {
             }
             if (tempcount == 0) {
                 PrintBoard.replace_board_character("\uD83D\uDFE9", temp2, temp3);
-                alreadychecked.add(tobechecked.get(0));
                 for (int i=-1; i<2; i++) {
                     for (int j=-1; j<2; j++) {
                         if ((temp2 + i >= 0) && (temp2 + i <= 19) && (temp3 + j >= 0) && (temp3 + j <= 14) && PrintBoard.mines[temp2 + i][temp3 + j] == 0 && !alreadychecked.contains((temp2 + i) + " " + (temp3 + j))) {
-                            tobechecked.add((temp2 + i) + " " + (temp3 + j));   
+                            tobechecked.add((temp2 + i) + " " + (temp3 + j));
+                            alreadychecked.add((temp2 + i) + " " + (temp3 + j));
                         }
                     }
                 }
                 tobechecked.remove(0);
             } else {
                 PrintBoard.replace_board_character("0" + Integer.toString(tempcount), temp2, temp3);
-                alreadychecked.add(tobechecked.get(0));
                 tobechecked.remove(0);
             }
+            // System.out.println(tobechecked);
         }
     }
 }
