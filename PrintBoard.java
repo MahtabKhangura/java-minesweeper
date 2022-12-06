@@ -38,7 +38,7 @@ public class PrintBoard {
     }
 
     public static void generate_mines(int xstart, int ystart) {
-        while (minecount < 60) {
+        while (minecount < 40) {
             int x = 1 + (int)(19*Math.random());
             int y = 1 + (int)(14*Math.random());
             boolean surround = false;
