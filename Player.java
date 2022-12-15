@@ -26,12 +26,12 @@ public class Player {
         playerVal1 = Integer.parseInt(playerVal[1]) - 1;
         playerVal2 = Integer.parseInt(playerVal[2]) - 1;
         
-        if ((action.equals("c") || action.equals("f")) && playerVal1 <= PrintBoard.board.length && playerVal2 <= PrintBoard.board[playerVal1].length && (PrintBoard.board[playerVal1][playerVal2] == "~~" || PrintBoard.board[playerVal1][playerVal2] == "\u26F3")) {
+        if ((action.equals("c") || action.equals("f")) && playerVal1 <= PrintBoard.board.length && playerVal2 <= PrintBoard.board[playerVal1].length && (PrintBoard.board[playerVal1][playerVal2] == "~~" || PrintBoard.board[playerVal1][playerVal2] == "FF")) {
           if (action.equals("c")) {
             if (firstMove) {
               for (int i=0; i<20; i++) {
                 for (int j=0; j<15; j++) {
-                    if (PrintBoard.board[i][j].equals("\u26F3")) {
+                    if (PrintBoard.board[i][j].equals("FF")) {
                         PrintBoard.replace_board_character("~~", i, j);
                     }
                 }
@@ -41,7 +41,7 @@ public class Player {
             }
           } else {
             if (PrintBoard.board[playerVal1][playerVal2] == "~~") {
-              PrintBoard.replace_board_character("\u26F3", playerVal1, playerVal2);
+              PrintBoard.replace_board_character("FF", playerVal1, playerVal2);
             } else {
               PrintBoard.replace_board_character("~~", playerVal1, playerVal2);
             }

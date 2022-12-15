@@ -60,7 +60,7 @@ public class PrintBoard {
         for (int x=0; x<20; x++) {
             for (int y=0; y<15; y++) {
                 if (mines[x][y] == 1) {
-                    replace_board_character("\uD83D\uDCA3", x, y);
+                    replace_board_character("BB", x, y);
                 }
             }
         }

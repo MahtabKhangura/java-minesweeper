@@ -63,7 +63,7 @@ public class Logic {
                 }
             }
             if (tempcount == 0) {
-                PrintBoard.replace_board_character("\uD83D\uDFE9", temp2, temp3);
+                PrintBoard.replace_board_character("CC", temp2, temp3);
                 for (int i=-1; i<2; i++) {
                     for (int j=-1; j<2; j++) {
                         if ((temp2 + i >= 0) && (temp2 + i <= 19) && (temp3 + j >= 0) && (temp3 + j <= 14) && PrintBoard.mines[temp2 + i][temp3 + j] == 0 && !alreadychecked.contains((temp2 + i) + " " + (temp3 + j))) {
